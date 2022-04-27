@@ -1,0 +1,58 @@
+﻿<Window x:Class="Aeroflot.Viewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aeroflot"
+        mc:Ignorable="d"
+        Title="Просмотр" MinHeight="220" Width="430" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" SizeToContent="WidthAndHeight" FontSize="12">
+    <DockPanel>
+        <GroupBox Header="Выбор условия" ToolTip="Здесь необходимо выбрать условие отбора среди записей, чтобы выполнить действие 'выборка','изменить','удалить'">
+            <StackPanel>
+                <RadioButton x:Name="RaceID" Content="Код" GroupName="S1" IsChecked="True"/>
+                <RadioButton x:Name="ArrivePlace" Content="Место прибытия" GroupName="S1"/>
+                <RadioButton x:Name="AirplaneCapacity" GroupName="S1">
+                    <StackPanel>
+                        <GroupBox Header="Вместимость">
+                            <StackPanel>
+                                <RadioButton x:Name="CapacityLess" Content="Меньше значения" GroupName="S3" IsChecked="True"/>
+                                <RadioButton x:Name="CapacityEqual" Content="Точное значение" GroupName="S3"/>
+                                <RadioButton x:Name="CapacityMore" Content="Больше значения" GroupName="S3"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="FreePlaces" GroupName="S1">
+                    <StackPanel>
+                        <GroupBox Header="Свободные места">
+                            <StackPanel>
+                                <RadioButton x:Name="FreePlacesLess" Content="Меньше значения" GroupName="S4" IsChecked="True"/>
+                                <RadioButton x:Name="FreePlacesEqual" Content="Точное значение" GroupName="S4"/>
+                                <RadioButton x:Name="FreePlacesMore" Content="Больше значения" GroupName="S4"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox>
+            <GroupBox.Header>
+                <DockPanel>
+                    <RadioButton x:Name="SelectAct" Content="Выборка" Margin="0,0,10,0" GroupName="ActionList" IsChecked="True"/>
+                    <RadioButton x:Name="UpdateAct" Content="Обновление" Margin="0,0,10,0" GroupName="ActionList" Checked="UpdateAct_Checked" Unchecked="UpdateAct_Unchecked"/>
+                    <RadioButton x:Name="DeleteAct" Content="Удаление" GroupName="ActionList" Checked="DeleteAct_Checked" Unchecked="DeleteAct_Unchecked"/>
+                </DockPanel>
+            </GroupBox.Header>
+            <StackPanel>
+                <Label Content="Значение"/>
+                <TextBox x:Name="CurVal" Margin="3"/>
+                <Button x:Name="DoIt" Content="Выполнить" Margin="3" Click="DoIt_Click"/>
+                <GroupBox x:Name="RepBox" Header="Заменить на" Visibility="Hidden">
+                    <StackPanel>
+                        <TextBox x:Name="RepVal" Margin="3"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+    </DockPanel>
+</Window>

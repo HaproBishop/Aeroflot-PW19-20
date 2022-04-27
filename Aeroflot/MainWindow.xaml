@@ -1,0 +1,33 @@
+﻿<Window x:Class="Aeroflot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aeroflot"
+        mc:Ignorable="d"
+        Title="Aeroflot" MinHeight="450" MinWidth="600" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="AddRecord" Header="_Добавить" Click="AddRecord_Click"/>
+            <MenuItem x:Name="EditRecord" Header="_Изменить" Click="EditRecord_Click"/>
+            <MenuItem x:Name="RmRecord" Header="_Удалить" Click="RmRecord_Click"/>
+            <MenuItem x:Name="ToView" Header="_Просмотр" Click="ToView_Click" ToolTip="Позволяет выполнить действия, связанные с БД и таблицей"/>
+            <MenuItem x:Name="RefreshView" Header="Обновить" Click="RefreshView_Click"/>
+            <MenuItem x:Name="Help" Header="_Справка" Click="Help_Click"/>
+            <MenuItem x:Name="AboutProgram" Header="_О программе" Click="AboutProgram_Click"/>
+        </Menu>
+        <ListView x:Name="DBView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Код" Width="40" DisplayMemberBinding="{Binding RaceID}"/>
+                    <GridViewColumn Header="Место прибытия" Width="100" DisplayMemberBinding="{Binding ArrivePlace}"/>
+                    <GridViewColumn Header="Время отправления" Width="115" DisplayMemberBinding="{Binding DepartureTime}"/>
+                    <GridViewColumn Header="Время прибытия" Width="100" DisplayMemberBinding="{Binding ArriveTime}"/>
+                    <GridViewColumn Header="Свободные места" Width="105" DisplayMemberBinding="{Binding FreePlaceCount}"/>
+                    <GridViewColumn Header="Вид самолета" Width="100" DisplayMemberBinding="{Binding AirplaneKind}"/>
+                    <GridViewColumn Header="Вместимость" Width="80" DisplayMemberBinding="{Binding AirplaneCapacity}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</Window>
